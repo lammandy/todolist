@@ -15,22 +15,22 @@
         <h1>to do</h1>
         <div class="form-group">
           <form method="POST", action="/">
-            {{ form.crsf_token }}
-            {{ wtf.form_field(form.todo) }}
+            {{ todo_form.crsf_token }}
+            {{ wtf.form_field(todo_form.todo1) }}
             <!-- <input type="submit" value=""> -->
           </form>
         </div>
         <ul class="list-group">
-          {% if tasks %}
-          {% for task in tasks %}
+          {% if todo_tasks %}
+          {% for todo_task in todo_tasks %}
           <li class="list-group-item d-flex justify-content-between align-items-center">
               <input type="checkbox" name="todo" value="1" >
-              <span>{{ task.todo }}</span>
+              <span>{{ todo_task.todo }}</span>
             <span align="right">
-             <a href="google.com"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+             <a href="todo_delete/{{todo_task.id}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
               <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
               </svg></a>
-            <a href="google.com"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+            <a href="todo_doing/{{todo_task.id}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
               </svg></a>
             </span>
@@ -41,9 +41,64 @@
       </div>
       <div class="col-sm text-center">
         <h1>doing</h1>
+        <div class="form-group">
+          <form method="POST", action="/">
+            {{ doing_form.crsf_token }}
+            {{ wtf.form_field(doing_form.todo2) }}
+            <!-- <input type="submit" value=""> -->
+          </form>
+        </div>
+        <ul class="list-group">
+          {% if doing_tasks %}
+          {% for doing_task in doing_tasks %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+              <input type="checkbox" name="todo" value="1" >
+              <span>{{ doing_task.todo }}</span>
+            <span align="right">
+             <a href="doing_delete/{{doing_task.id}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+              </svg></a>
+            <a href="doing_todo/{{doing_task.id}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+              </svg></a>
+
+            <a href="doing_done/{{doing_task.id}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+              </svg></a>
+            </span>
+            </li>
+          {% endfor %}
+          {% endif %}
+        </ul>
       </div>
       <div class="col-sm text-center">
         <h1>done</h1>
+        <div class="form-group">
+          <form method="POST", action="/">
+            {{ done_form.crsf_token }}
+            {{ wtf.form_field(done_form.todo3) }}
+            <!-- <input type="submit" value=""> -->
+          </form>
+        </div>
+        <ul class="list-group">
+          {% if done_tasks %}
+          {% for done_task in done_tasks %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+              <input type="checkbox" name="todo" value="1" >
+              <span>{{ done_task.todo }}</span>
+            <span align="right">
+             <a href="done_delete/{{done_task.id}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+              </svg></a>
+            <a href="done_doing/{{done_task.id}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+              </svg></a>
+            </span>
+            </li>
+          {% endfor %}
+          {% endif %}
+        </ul>
+
       </div>
     </div>
   </div>
